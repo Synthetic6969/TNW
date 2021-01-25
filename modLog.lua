@@ -9,12 +9,13 @@ for i = 1,10 do
 end
 getgenv().kickString = s
 
+local blacklist = {}
+
 gmt.__namecall = newcclosure(function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
     if string.lower(tostring(method)) == "kick" and self == player then
         if args[1] == getgenv().kickString then
-            warn("OOF!")
             return oldNamecall(self, "Moderator Detected")
         else
             return
@@ -28,11 +29,19 @@ while true do
         if v:GetRoleInGroup(6867395) ~= "Fan" then
             if getgenv().ModLog then
                 player:Kick(getgenv().kickString)
-            else
+            elseif not table.find(blackist, v.Name) then
+                table.insert(blacklist, v.Name)
                 game:service'StarterGui':SetCore("SendNotification", {
                     Title = "Moderator Detected",
                     Text = v.Name,
-                    Button1 = "what a whitehat"
+                    Button1 = "wanna stay? [alpha as fuck]"
+                    Button2 = "pussy out [log]"
+                    Callback = function(text)
+                        if text == "pussy out [log]" then
+                            player:kick(getgenv().kickString)
+                        end
+                    end)
+                    Duration = 999999
                 })
             end
         end
