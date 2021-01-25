@@ -192,6 +192,9 @@ xpcall(function()
     end)
     utilityWindow:AddButton("Buy", function()
         if getgenv().buyAmount ~= nil or getgenv().shop ~= nil or getgenv().itemToBuy ~= nil then
+            warn(getgenv().shop)
+            warn(getgenv().itemToBuy)
+            warn(getgenv().buyAmount)
             getgenv().requestFunction("purchaseItem", getgenv().shop, getgenv().itemToBuy, getgenv().buyAmount)
         else
             errorNotification("You did not select an item to buy.")
