@@ -1,0 +1,21 @@
+local player = game:service'Players'.LocalPlayer
+pcall(function()
+    player.Character.DescendantAdded:Connect(function()
+        wait(.1)
+        player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
+    end)
+    wait(.1)
+    player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
+end)
+player.CharacterAdded:Connect(function()
+    if getgenv().HideName then
+        pcall(function()
+            player.Character.DescendantAdded:Connect(function()
+                wait(.1)
+                player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
+            end)
+            wait(.1)
+            player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
+        end)
+    end
+end)
