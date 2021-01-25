@@ -18,14 +18,14 @@ gmt.__namecall = newcclosure(function(self, ...)
         if args[1] == getgenv().kickString then
             return oldNamecall(self, "Moderator Detected")
         else
-            return
+            return 
         end
     end
     return oldNamecall(self, ...)
 end)
 
 coroutine.resume(coroutine.create(function()
-    while true do
+    while wait(.5) do
     for _, v in next, game:GetService("Players"):GetChildren() do
         pcall(function()
         if v:GetRoleInGroup(6867395) ~= "Fan" then
@@ -33,14 +33,14 @@ coroutine.resume(coroutine.create(function()
                 player:Kick(getgenv().kickString)
             elseif not table.find(blackist, v.Name) then
                 table.insert(blacklist, v.Name)
-                game:service'StarterGui':SetCore("SendNotification", {
+                game:GetService("StarterGui"):SetCore("SendNotification", {
                     Title = "Moderator Detected",
                     Text = v.Name,
                     Button1 = "wanna stay? [alpha as fuck]"
                     Button2 = "pussy out [log]"
                     Callback = function(text)
                         if text == "pussy out [log]" then
-                            player:kick(getgenv().kickString)
+                            player:Kick(getgenv().kickString)
                         end
                     end)
                     Duration = 999999
@@ -49,6 +49,5 @@ coroutine.resume(coroutine.create(function()
         end
         end)
     end
-    wait(.5)
 end
 end))
