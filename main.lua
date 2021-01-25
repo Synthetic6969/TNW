@@ -73,11 +73,14 @@ xpcall(function()
         getgenv().ModLog = toggled
         updateSettings()
     end)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/modLog.lua", true))()
     settingsWindow:AddToggle("Hide Name", function(toggled)
         getgenv().HideName = toggled
         if toggled then
-            hideName()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/hideName.lua", true))()
             updateSettings()
+        else
+            errorNotification("Rejoin to fix your name.")
         end
     end)
     settingsWindow:AddToggle("Safe Farm", function(toggled)
@@ -174,29 +177,6 @@ xpcall(function()
             player.Character.Humanoid.JumpPower = getgenv().JumpPower or oldJumpPower
         end)
     end)
-    
-    function hideName()
-        pcall(function()
-            player.Character.DescendantAdded:Connect(function()
-                wait(.1)
-                player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
-            end)
-            wait(.1)
-            player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
-        end)
-        player.CharacterAdded:Connect(function()
-            if getgenv().HideName then
-                pcall(function()
-                    player.Character.DescendantAdded:Connect(function()
-                        wait(.1)
-                        player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
-                    end)
-                    wait(.1)
-                    player.Character.Head:FindFirstChild("LabelBillboardGui"):Destroy()
-                end)
-            end
-        end)
-    end
     
     game:service'UserInputService'.InputBegan:Connect(function(input, isTyping)
         if isTyping then return end
