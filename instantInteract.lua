@@ -18,6 +18,7 @@ end)
 game:service'RunService'.RenderStepped:Connect(function()
     if getgenv().FastInteract then
         --// Pick up
+        local targetPlayer = game:service'Players':GetPlayerFromCharacter(mouse.Target.Parent)
         if eDown and mouse.Target ~= nil then
             if mouse.Target.Parent.Parent == workspace.World.Items then
                 getgenv().requestFunction("take", mouse.Target.Parent)
@@ -25,7 +26,11 @@ game:service'RunService'.RenderStepped:Connect(function()
                 getgenv().requestFunction("interact", true, "tree", mouse.Target.Parent.Parent.Parent)
             elseif mouse.Target.Parent:FindFirstChild("Type") and mouse.Target.Parent.Parent.Parent.Status.Type.Value == "mine" then
                 getgenv().requestFunction("interact", true, "mine", mouse.Target.Parent.Parent.Parent)
-            elseif mouse.Target.Parent
+            elseif targetPlayer and targetPlayer.Status.Downed then
+                local bandage = player.Character.Attachments:FindFirstChild("Bandage")
+                if bandage and tostring(bandage.Main.MainWeld.Part1) == "Right Arm" then
+                    getgenv().requestFunction("bandagePlayer", targetPlayer)
+                end
             end
         end
     end
