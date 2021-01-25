@@ -180,7 +180,7 @@ xpcall(function()
     
     game:service'UserInputService'.InputBegan:Connect(function(input, isTyping)
         if isTyping then return end
-        if input.KeyCode == "F5" then
+        if input.KeyCode == Enum.KeyCode.F5 then
             game.CoreGui.UILibrary.Enabled = not game.CoreGui.UILibrary.Enabled
         end
     end)
