@@ -233,7 +233,7 @@ xpcall(function()
         })
     end
     
-    local gmt = getrawmetatable(game)
+    --[[local gmt = getrawmetatable(game)
     local oldIndex = gmt.__index
     setreadonly(gmt, false)
     
@@ -253,7 +253,7 @@ xpcall(function()
             player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeed or oldWalkSpeed
             player.Character.Humanoid.JumpPower = getgenv().JumpPower or oldJumpPower
         end)
-    end)
+    end)]]
     
     game:service'UserInputService'.InputBegan:Connect(function(input, isTyping)
         if isTyping then return end
