@@ -208,6 +208,7 @@ xpcall(function()
     end)
     utilityWindow:AddBox("1", function(object, focus)
         if focus then
+            warn(object.Text)
             getgenv().sellAmount = tonumber(object.Text)
         end
     end)
