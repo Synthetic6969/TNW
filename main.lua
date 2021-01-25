@@ -202,12 +202,13 @@ xpcall(function()
         end
     end)
     utilityWindow:AddLabel("")
-    utilityWindow:AddBox(". . .", function(object, focus)
+    utilityWindow:AddBox("Item to sell", function(object, focus)
         if focus then
+            warn(object.Text)
             getgenv().itemToSell = object.Text
         end
     end)
-    utilityWindow:AddBox("1", function(object, focus)
+    utilityWindow:AddBox("Amount to sell", function(object, focus)
         if focus then
             warn(object.Text)
             getgenv().sellAmount = tonumber(object.Text)
