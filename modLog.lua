@@ -26,28 +26,28 @@ end)
 
 coroutine.resume(coroutine.create(function()
     while wait(.5) do
-    for _, v in next, game:GetService("Players"):GetChildren() do
-        pcall(function()
-        if v:GetRoleInGroup(6867395) ~= "Fan" then
-            if getgenv().ModLog then
-                player:Kick(getgenv().kickString)
-            elseif not table.find(blackist, v.Name) then
-                table.insert(blacklist, v.Name)
-                game:GetService("StarterGui"):SetCore("SendNotification", {
-                    Title = "Moderator Detected",
-                    Text = v.Name,
-                    Button1 = "wanna stay? [alpha as fuck]",
-                    Button2 = "pussy out [log]",
-                    Callback = function(text)
-                        if text == "pussy out [log]" then
-                            player:Kick(getgenv().kickString)
-                        end
-                    end),
-                    Duration = 999999
-                })
-            end
+        for _, v in next, game:GetService("Players"):GetChildren() do
+            pcall(function()
+                if v:GetRoleInGroup(6867395) ~= "Fan" then
+                    if getgenv().ModLog then
+                        player:Kick(getgenv().kickString)
+                    elseif not table.find(blacklist, v.Name) then
+                        table.insert(blacklist, v.Name)
+                        game:GetService("StarterGui"):SetCore("SendNotification", {
+                            Title = "Moderator Detected",
+                            Text = v.Name,
+                            Button1 = "wanna stay? [alpha as fuck]",
+                            Button2 = "pussy out [log]",
+                            Callback = function(text)
+                                if text == "pussy out [log]" then
+                                    player:Kick(getgenv().kickString)
+                                end
+                            end,
+                            Duration = 999999
+                        })
+                    end
+                end
+            end)
         end
-        end)
     end
-end
 end))
