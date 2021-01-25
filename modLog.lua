@@ -24,6 +24,13 @@ gmt.__namecall = newcclosure(function(self, ...)
     return oldNamecall(self, ...)
 end)
 
+local bindable = Instance.new("BindableFunction")
+function bindable.OnInvoke(text)
+    if text == "pussy out [log]" then
+        player:Kick(getgenv().kickString)
+    end
+end
+
 coroutine.resume(coroutine.create(function()
     while wait(.5) do
         for _, v in next, game:GetService("Players"):GetChildren() do
@@ -38,11 +45,7 @@ coroutine.resume(coroutine.create(function()
                             Text = v.Name,
                             Button1 = "wanna stay? [alpha as fuck]",
                             Button2 = "pussy out [log]",
-                            Callback = function(text)
-                                if text == "pussy out [log]" then
-                                    player:Kick(getgenv().kickString)
-                                end
-                            end,
+                            Callback = bindable,
                             Duration = 999999
                         })
                     end
