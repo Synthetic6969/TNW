@@ -150,6 +150,7 @@ xpcall(function()
     utilityWindow:AddToggle("Autofarm", function(toggled)
         
     end)
+    utilityWindow:AddLabel("")
     utilityWindow:AddDropdown({"Close Range", "Mid Range", "Long Range"}, function(selected)
         if selected == "Close Range" then
             getgenv().itemsToBuy = settings.CloseRange
@@ -170,13 +171,13 @@ xpcall(function()
             errorNotification("You did not select a set!")
         end
     end)
-    utilityWindow:AddLabel("Buy Items")
-    utilityWindow:AddBox(". . .", function(object, focus)
+    utilityWindow:AddLabel("")
+    utilityWindow:AddBox("Item name", function(object, focus)
         if focus then
             getgenv().itemToBuy = object.Text
         end
     end)
-    utilityWindow:AddBox("1", function(object, focus)
+    utilityWindow:AddBox("Amount to buy", function(object, focus)
         if focus then
             getgenv().buyAmount = tonumber(object.Text)
         end
@@ -200,7 +201,7 @@ xpcall(function()
             errorNotification("You did not select an item to buy.")
         end
     end)
-    utilityWindow:AddLabel("Sell items")
+    utilityWindow:AddLabel("")
     utilityWindow:AddBox(". . .", function(object, focus)
         if focus then
             getgenv().itemToSell = object.Text
