@@ -73,7 +73,9 @@ xpcall(function()
         getgenv().ModLog = toggled
         updateSettings()
     end)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/modLog.lua", true))()
+    coroutine.resume(coroutine.create(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/modLog.lua", true))()
+    end))
     settingsWindow:AddToggle("Hide Name", function(toggled)
         getgenv().HideName = toggled
         if toggled then
