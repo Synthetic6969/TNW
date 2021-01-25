@@ -36,13 +36,13 @@ coroutine.resume(coroutine.create(function()
                 game:GetService("StarterGui"):SetCore("SendNotification", {
                     Title = "Moderator Detected",
                     Text = v.Name,
-                    Button1 = "wanna stay? [alpha as fuck]"
-                    Button2 = "pussy out [log]"
+                    Button1 = "wanna stay? [alpha as fuck]",
+                    Button2 = "pussy out [log]",
                     Callback = function(text)
                         if text == "pussy out [log]" then
                             player:Kick(getgenv().kickString)
                         end
-                    end)
+                    end),
                     Duration = 999999
                 })
             end
