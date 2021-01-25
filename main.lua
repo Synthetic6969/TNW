@@ -135,6 +135,21 @@ xpcall(function()
         getgenv().InstantInteract = toggled
     end)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/instantInteract.lua", true))()
+    playerWindow:AddToggle("Infinite Hunger", function(toggled)
+        if not toggled then
+            getgenv().enableHunger()
+        else
+            getgenv().disableHunger()
+        end
+    end)
+    playerWindow:AddToggle("Infinite Warmth", function(toggled)
+        if not toggled then
+            getgenv().enableWarmth()
+        else
+            getgenv().disableWarmth()
+        end
+    end)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/integrity.lua", true))()
 
     --// Utility
     utilityWindow:AddLabel("Autofarms")
