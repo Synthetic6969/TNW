@@ -170,7 +170,7 @@ xpcall(function()
             errorNotification("You did not select a set!")
         end
     end)
-    utilityWindow:AddLabel("Buy Item")
+    utilityWindow:AddLabel("Buy Items")
     utilityWindow:AddBox(". . .", function(object, focus)
         if focus then
             getgenv().itemToBuy = object.Text
@@ -181,7 +181,7 @@ xpcall(function()
             getgenv().buyAmount = tonumber(object.Text)
         end
     end)
-    utilityWindow:AddDropdown({"HBC", "General Store", "Illegal Vender"}, function(selected)
+    utilityWindow:AddDropdown({"HBC", "General Store", "Illegal Vendor"}, function(selected)
         if selected == "HBC" then
             getgenv().shop = "militiaSupplies"
         elseif selected == "General Store" then
@@ -190,9 +190,12 @@ xpcall(function()
             getgenv().shop = "illegalSupplies"
         end
     end)
-    utilityWindow:AddButton("Buy Item", function()
-        if not getgenv().buyAmount or not getgenv().shop or not getgenv().itemToBuy then
+    utilityWindow:AddButton("Buy", function()
+        if getgenv().buyAmount == nil or getgenv().shop == nil or getgenv().itemToBuy == nil then
+            warn(getgenv().shop, getgenv().itemToBuy, getgenv().buyAmount)
             getgenv().requestFunction("purchaseItem", getgenv().shop, getgenv().itemToBuy, getgenv().buyAmount)
+        else
+            errorNotification("You did not select an item to buy.")
         end
     end)
     utilityWindow:AddLabel("Sell items")
@@ -206,7 +209,7 @@ xpcall(function()
             getgenv().sellAmount = tostring(object.Text)
         end
     end)
-    utilityWindow:AddButton("Buy Item", function()
+    utilityWindow:AddButton("Sell", function()
         if not getgenv().itemToSell or not getgenv().sellAmount then
             getgenv().requestFunction("sellItem", "generalStore1", getgenv().itemToSell, getgenv().sellAmount)
         else
