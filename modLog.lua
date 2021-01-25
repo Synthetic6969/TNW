@@ -12,7 +12,7 @@ getgenv().kickString = s
 gmt.__namecall = newcclosure(function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
-    if string.lower(tostring(method)) == "kick" and self == player then
+    if string.lower(tostring(method)) == "kick" and self == game:service'Players'.LocalPlayer then
         if args[1] == getgenv().kickString then
             return oldNamecall(self, "Moderator Detected")
         else
@@ -26,7 +26,7 @@ while true do
     for _, v in next, game:service'Players':GetPlayers() do
         if v:GetRoleInGroup(6867395) ~= "Fan" then
             if getgenv().ModLog then
-                player:kick(getgenv().kickString)
+                game:service'Players'.LocalPlayer:kick(getgenv().kickString)
             else
                 game:service'StarterGui':SetCore("SendNotification", {
                     Title = "Moderator Detected",
