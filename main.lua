@@ -150,6 +150,69 @@ xpcall(function()
     utilityWindow:AddToggle("Autofarm", function(toggled)
         
     end)
+    utilityWindow:AddDropdown({"Close Range", "Mid Range", "Long Range"}, function(selected)
+        if selected == "Close Range" then
+            getgenv().itemsToBuy = settings.CloseRange
+        elseif selected == "Mid Range" then
+            getgenv().itemsToBuy = settings.MidRange
+        elseif selected == "Long Range" then
+            getgenv().itemsToBuy = settings.LongRange
+        end
+    end)
+    utilityWindow:AddButton("Buy Set", function()
+        if getgenv().itemsToBuy ~= nil then
+            xpcall(function()
+                for _, v in next, getgenv().itemsToBuy do
+                    getgenv().requestFunction("purchaseItem", v[1], v[2], v[3])
+                end
+            end, warn)
+        else
+            errorNotification("You did not select a set!")
+        end
+    end)
+    utilityWindow:AddLabel("Buy Item")
+    utilityWindow:AddBox(". . .", function(object, focus)
+        if focus then
+            getgenv().itemToBuy = object.Text
+        end
+    end)
+    utilityWindow:AddBox("1", function(object, focus)
+        if focus then
+            getgenv().buyAmount = tonumber(object.Text)
+        end
+    end)
+    utilityWindow:AddDropdown({"HBC", "General Store", "Illegal Vender"}, function(selected)
+        if selected == "HBC" then
+            getgenv().shop = "militiaSupplies"
+        elseif selected == "General Store" then
+            getgenv().shop = "generalStore1"
+        elseif selected == "Illegal Vendor" then
+            getgenv().shop = "illegalSupplies"
+        end
+    end)
+    utilityWindow:AddButton("Buy Item", function()
+        if not getgenv().buyAmount or not getgenv().shop or not getgenv().itemToBuy then
+            getgenv().requestFunction("purchaseItem", getgenv().shop, getgenv().itemToBuy, getgenv().buyAmount)
+        end
+    end)
+    utilityWindow:AddLabel("Sell items")
+    utilityWindow:AddBox(". . .", function(object, focus)
+        if focus then
+            getgenv().itemToSell = object.Text
+        end
+    end)
+    utilityWindow:AddBox("1", function(object, focus)
+        if focus then
+            getgenv().sellAmount = tostring(object.Text)
+        end
+    end)
+    utilityWindow:AddButton("Buy Item", function()
+        if not getgenv().itemToSell or not getgenv().sellAmount then
+            getgenv().requestFunction("sellItem", "generalStore1", getgenv().itemToSell, getgenv().sellAmount)
+        else
+            errorNotification("You did not select an item to sell.")
+        end
+    end)
     
     --// Misc
     function errorNotification(msg)
