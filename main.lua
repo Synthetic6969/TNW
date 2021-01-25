@@ -1,5 +1,5 @@
 xpcall(function()
-    local player = game:service'Players'.LocalPlayer
+    local player = game:GetService('Players').LocalPlayer
 
     --// Anti exploit bypass
     xpcall(function()
