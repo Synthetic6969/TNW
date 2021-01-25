@@ -26,7 +26,7 @@ end)
 
 local bindable = Instance.new("BindableFunction")
 function bindable.OnInvoke(text)
-    if text == "pussy out [log]" then
+    if text == "pussy out" then
         player:Kick(getgenv().kickString)
     end
 end
@@ -43,8 +43,8 @@ coroutine.resume(coroutine.create(function()
                         game:GetService("StarterGui"):SetCore("SendNotification", {
                             Title = "Moderator Detected",
                             Text = v.Name,
-                            Button1 = "wanna stay? [alpha as fuck]",
-                            Button2 = "pussy out [log]",
+                            Button1 = "bro idc",
+                            Button2 = "pussy out",
                             Callback = bindable,
                             Duration = 999999
                         })
