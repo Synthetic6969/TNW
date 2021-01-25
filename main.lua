@@ -214,7 +214,7 @@ xpcall(function()
         end
     end)
     utilityWindow:AddButton("Sell", function()
-        if not getgenv().itemToSell or not getgenv().sellAmount then
+        if getgenv().itemToSell or getgenv().sellAmount then
             getgenv().requestFunction("sellItem", "generalStore1", getgenv().itemToSell, getgenv().sellAmount)
         else
             errorNotification("You did not select an item to sell.")
