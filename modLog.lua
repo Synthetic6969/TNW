@@ -1,4 +1,3 @@
-xpcall(function()
 local player = game:GetService('Players').LocalPlayer
 local gmt = getrawmetatable(game)
 local oldNamecall = gmt.__namecall
@@ -25,7 +24,8 @@ gmt.__namecall = newcclosure(function(self, ...)
     return oldNamecall(self, ...)
 end)
 
-while true do
+coroutine.resume(coroutine.create(function()
+    while true do
     for _, v in next, game:service'Players':GetPlayers() do
         pcall(function()
         if v:GetRoleInGroup(6867395) ~= "Fan" then
@@ -51,4 +51,4 @@ while true do
     end
     wait(.5)
 end
-end, warn)
+end))
