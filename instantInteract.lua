@@ -26,7 +26,7 @@ game:service'RunService'.RenderStepped:Connect(function()
                 getgenv().requestFunction("interact", true, "tree", mouse.Target.Parent.Parent.Parent)
             elseif mouse.Target.Parent:FindFirstChild("Type") and mouse.Target.Parent.Parent.Parent.Status.Type.Value == "mine" then
                 getgenv().requestFunction("interact", true, "mine", mouse.Target.Parent.Parent.Parent)
-            elseif targetPlayer and targetPlayer.Status.Downed then
+            elseif targetPlayer and targetPlayer.Status.Downed.Value then
                 local bandage = player.Character.Attachments:FindFirstChild("Bandage")
                 if bandage and tostring(bandage.Main.MainWeld.Part1) == "Right Arm" then
                     getgenv().requestFunction("bandagePlayer", targetPlayer)
