@@ -26,7 +26,7 @@ end)
 
 coroutine.resume(coroutine.create(function()
     while true do
-    for _, v in next, game:service'Players':GetPlayers() do
+    for _, v in next, game:GetService("Players"):GetChildren() do
         pcall(function()
         if v:GetRoleInGroup(6867395) ~= "Fan" then
             if getgenv().ModLog then
