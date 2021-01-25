@@ -130,7 +130,11 @@ xpcall(function()
         espEnabled = true
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua", true))()
     end)
-    
+    playerWindow:AddToggle("Instant Interact", function(toggled)
+        getgenv().InstantInteract = toggled
+    end)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/instantInteract.lua", true))()
+
     --// Utility
     utilityWindow:AddLabel("Autofarms")
     utilityWindow:AddDropdown({"Wood", "Ores", "Hunting"}, function(selected)
