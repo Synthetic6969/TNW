@@ -14,6 +14,7 @@ gmt.__namecall = newcclosure(function(self, ...)
     local method = getnamecallmethod()
     if string.lower(tostring(method)) == "kick" and self == player then
         if args[1] == getgenv().kickString then
+            warn("OOF!")
             return oldNamecall(self, "Moderator Detected")
         else
             return
