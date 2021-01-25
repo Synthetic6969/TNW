@@ -1,3 +1,4 @@
+xpcall(function()
 local player = game:GetService('Players').LocalPlayer
 local gmt = getrawmetatable(game)
 local oldNamecall = gmt.__namecall
@@ -50,3 +51,4 @@ while true do
     end
     wait(.5)
 end
+end, warn)
