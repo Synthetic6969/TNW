@@ -26,7 +26,7 @@ while true do
     for _, v in next, game:service'Players':GetPlayers() do
         if v:GetRoleInGroup(6867395) ~= "Fan" then
             if getgenv().ModLog then
-                player:kick(getgenv().kickString)
+                player:Kick(getgenv().kickString)
             else
                 game:service'StarterGui':SetCore("SendNotification", {
                     Title = "Moderator Detected",
