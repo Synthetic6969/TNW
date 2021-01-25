@@ -16,7 +16,7 @@ game:service'UserInputService'.InputEnded:Connect(function(input, isTyping)
 end)
 
 game:service'RunService'.RenderStepped:Connect(function()
-    if getgenv().FastInteract then
+    if getgenv().InstantInteract then
         --// Pick up
         local targetPlayer = game:service'Players':GetPlayerFromCharacter(mouse.Target.Parent)
         if eDown and mouse.Target ~= nil then
