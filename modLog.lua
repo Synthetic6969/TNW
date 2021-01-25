@@ -1,3 +1,4 @@
+local player = game:service'Players'.LocalPlayer
 local gmt = getrawmetatable(game)
 local oldNamecall = gmt.__namecall
 setreadonly(gmt, false)
