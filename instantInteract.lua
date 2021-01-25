@@ -1,5 +1,6 @@
 local player = game:service'Players'.LocalPlayer
 local mouse = player:GetMouse()
+rconsoleprint("Hi")
 
 local eDown
 game:service'UserInputService'.InputBegan:Connect(function(input, isTyping)
