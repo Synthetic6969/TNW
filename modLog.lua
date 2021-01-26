@@ -33,6 +33,7 @@ end
 
 coroutine.resume(coroutine.create(function()
     while wait(.5) do
+        --// Check for new mods
         for _, v in next, game:GetService("Players"):GetChildren() do
             pcall(function()
                 if v:GetRoleInGroup(6867395) ~= "Fan" then
@@ -43,7 +44,7 @@ coroutine.resume(coroutine.create(function()
                         game:GetService("StarterGui"):SetCore("SendNotification", {
                             Title = "Moderator Detected",
                             Text = v.Name,
-                            Button1 = "bro idc",
+                            Button1 = "idc [alpha af]",
                             Button2 = "pussy out",
                             Callback = bindable,
                             Duration = 999999
@@ -51,6 +52,24 @@ coroutine.resume(coroutine.create(function()
                     end
                 end
             end)
+        end
+        --// Check if mod left game
+        for i, v in pairs(blacklist) do
+            local modFound
+            for _, v2 in next, game:service'Players':GetPlayers() do
+                if v2.Name == v then
+                    modFound = true
+                    table.remove(blacklist, i)
+                end
+            end
+            if not modFound and player then
+                game:GetService("StarterGui"):SetCore("SendNotification", {
+                    Title = "Moderator Detected",
+                    Text = v.Name,
+                    Button1 = "epic",
+                    Duration = 999999
+                })
+            end
         end
     end
 end))
