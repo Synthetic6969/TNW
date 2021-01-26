@@ -83,7 +83,7 @@ function library.new()
 		self.windowcount = self.windowcount + 1;
 	
 		temp.gui = temp.gui or self:Create("ScreenGui", {Name = "UILibrary", Parent = game.CoreGui})
-		window.frame = self:Create("Frame", {
+		window.frame = self:Create("ImageButton", {
 			Name = options.text;
 			Parent = self.gui,
 			Active = true,
@@ -91,6 +91,8 @@ function library.new()
 			Size = UDim2.new(0, 190, 0, 30),
 			Position = UDim2.new(0, (15 + ((200 * self.windowcount) - 200)), 0, 15),
 			BackgroundColor3 = options.barcolor,
+			ImageTransparency = 1,
+			Modal = true,
 			BorderSizePixel = 0;
 		})
 	
