@@ -63,10 +63,10 @@ coroutine.resume(coroutine.create(function()
             for _, v2 in next, game:service'Players':GetPlayers() do
                 if v2.Name == v then
                     modFound = true
-                    table.remove(blacklist, i)
                 end
             end
             if not modFound and player then
+                table.remove(blacklist, i)
                 game:GetService("StarterGui"):SetCore("SendNotification", {
                     Title = "Moderator Detected",
                     Text = v.Name,
