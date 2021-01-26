@@ -9,19 +9,19 @@ for _, v in next, getgc(true) do
 end
 
 getgenv().enableInfiniteHunger = function()
-    v.setHunger = newcclosure(function(plr)
+    integrityTable.setHunger = newcclosure(function(plr)
         oldHunger(plr, 200)
     end)
 end
 getgenv().enableInfiniteWarmth = function()
-    v.setWarmth = newcclosure(function(plr)
+    integrityTable.setWarmth = newcclosure(function(plr)
         oldWarmth(plr, 5000)
     end)
 end
 
 getgenv().disableInfiniteHunger = function()
-    v.setHunger = oldHunger
+    integrityTable.setHunger = oldHunger
 end
 getgenv().disableInfiniteWarmth = function()
-    v.setWarmth = oldWarmth
+    integrityTable.setWarmth = oldWarmth
 end
