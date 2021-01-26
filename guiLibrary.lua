@@ -93,6 +93,13 @@ function library.new()
 			BackgroundColor3 = options.barcolor,
 			BorderSizePixel = 0;
 		})
+
+		window.frame.MouseEnter:Connect(function()
+			game:service'UserInputService'.MouseIconEnabled = true
+		end)
+		window.frame.MouseLeave:Connect(function()
+			game:service'UserInputService'.MouseIconEnabled = false
+		end)
 	
 		window.background = self:Create('Frame', {
 			Name = 'Background';
