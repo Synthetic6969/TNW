@@ -63,7 +63,7 @@ function library.new()
 	
 		if class == "ScreenGui" then
 			syn.protect_gui(object)
-		elseif class == "Frame" then
+		elseif class == "Frame" or class == "TextLabel" or class == "TextButton" or class == "TextBox" or class == "ImageLabel" or class == "ImageButton" then
 			object.MouseEnter:Connect(function()
 				game:service'UserInputService'.MouseIconEnabled = true
 			end)
