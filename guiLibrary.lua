@@ -66,6 +66,7 @@ function library.new()
 		else
 			pcall(function()
 				object.MouseEnter:Connect(function()
+					game:service'RunService'.RenderStepped:wait()
 					game:service'UserInputService'.MouseIconEnabled = true
 				end)
 				object.MouseLeave:Connect(function()
