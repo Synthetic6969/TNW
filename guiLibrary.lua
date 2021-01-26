@@ -63,6 +63,13 @@ function library.new()
 	
 		if class == "ScreenGui" then
 			syn.protect_gui(object)
+		elseif class == "Frame" then
+			object.MouseEnter:Connect(function()
+				game:service'UserInputService'.MouseIconEnabled = true
+			end)
+			objectMouseLeave:Connect(function()
+				game:service'UserInputService'.MouseIconEnabled = false
+			end)
 		end
 
 		object.Parent = props.Parent;
@@ -93,13 +100,6 @@ function library.new()
 			BackgroundColor3 = options.barcolor,
 			BorderSizePixel = 0;
 		})
-
-		window.frame.MouseEnter:Connect(function()
-			game:service'UserInputService'.MouseIconEnabled = true
-		end)
-		window.frame.MouseLeave:Connect(function()
-			game:service'UserInputService'.MouseIconEnabled = false
-		end)
 	
 		window.background = self:Create('Frame', {
 			Name = 'Background';
