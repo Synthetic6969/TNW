@@ -67,7 +67,7 @@ function library.new()
 			object.MouseEnter:Connect(function()
 				game:service'UserInputService'.MouseIconEnabled = true
 			end)
-			objectMouseLeave:Connect(function()
+			object.MouseLeave:Connect(function()
 				game:service'UserInputService'.MouseIconEnabled = false
 			end)
 		end
