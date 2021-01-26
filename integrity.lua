@@ -12,16 +12,16 @@ end
 
 --// Disable
 getgenv().disableHunger = function()
-    v.depleteHunger = function() end
+    integrityTable.depleteHunger = function() end
 end
 getgenv().disableWarmth = function()
-    v.depleteWarmth = function() end
+    integrityTable.depleteWarmth = function() end
 end
 
 --// Enable
 getgenv().enableHunger = function()
-    v.depleteHunger = oldHunger
+    integrityTable.depleteHunger = oldHunger
 end
 getgenv().enableWarmth = function()
-    v.depleteWarmth = oldWarmth
+    integrityTable.depleteWarmth = oldWarmth
 end
