@@ -136,18 +136,10 @@ xpcall(function()
     end)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/instantInteract.lua", true))()
     playerWindow:AddToggle("Infinite Hunger", function(toggled)
-        if not toggled then
-            getgenv().enableHunger()
-        else
-            getgenv().disableHunger()
-        end
+        getgenv().infiniteHunger = toggled
     end)
     playerWindow:AddToggle("Infinite Warmth", function(toggled)
-        if not toggled then
-            getgenv().enableWarmth()
-        else
-            getgenv().disableWarmth()
-        end
+        getgenv().infiniteWarmth = toggled
     end)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Synthetic6969/TNW/main/integrity.lua", true))()
 
