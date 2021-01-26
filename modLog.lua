@@ -1,15 +1,16 @@
 local player = game:GetService('Players').LocalPlayer
-local gmt = getrawmetatable(game)
-local oldNamecall = gmt.__namecall
-setreadonly(gmt, false)
 
+--// Generate random kick key
 local s = ""
 for i = 1,10 do
     s = s..string.char(math.random(1, 200))
 end
 getgenv().kickString = s
 
-local blacklist = {}
+--// Kick namecall
+local gmt = getrawmetatable(game)
+local oldNamecall = gmt.__namecall
+setreadonly(gmt, false)
 
 gmt.__namecall = newcclosure(function(self, ...)
     local args = {...}
@@ -24,6 +25,7 @@ gmt.__namecall = newcclosure(function(self, ...)
     return oldNamecall(self, ...)
 end)
 
+--// Button callback
 local bindable = Instance.new("BindableFunction")
 function bindable.OnInvoke(text)
     if text == "pussy out" then
@@ -31,6 +33,8 @@ function bindable.OnInvoke(text)
     end
 end
 
+--// Loop
+local blacklist = {}
 coroutine.resume(coroutine.create(function()
     while wait(.5) do
         --// Check for new mods
