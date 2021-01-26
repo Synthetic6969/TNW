@@ -1,13 +1,27 @@
-local player = game:service'Players'.LocalPlayer
-local statusFolder = player:WaitForChild("Status")
+local integrityTable, oldHunger, oldWarmth
 
-statusFolder.Hunger.Changed:Connect(function()
-    if getgenv().infiniteHunger then
-        statusFolder.Hunger.Value = 200
+for _, v in next, getgc(true) do
+    if type(v) == "table" and rawget(v, "setHunger") and rawget(v, "setWarmth") then
+        integrityTable = v
+        oldHunger = v.setHunger
+        oldWarmth = v.setWarmth
     end
-end)
-statusFolder.Warmth.Changed:Connect(function()
-    if getgenv().infiniteWarmth then
-        statusFolder.Warmth.Value = 5000
-    end
-end)
+end
+
+getgenv().enableInfiniteHunger = function()
+    v.setHunger = newcclosure(function(plr)
+        oldHunger(plr, 200)
+    end)
+end
+getgenv().enableInfiniteWarmth = function()
+    v.setWarmth = newcclosure(function(plr)
+        oldWarmth(plr, 5000)
+    end)
+end
+
+getgenv().disableInfiniteHunger = function()
+    v.setHunger = oldHunger
+end
+getgenv().disableInfiniteWarmth = function()
+    v.setWarmth = oldWarmth
+end
