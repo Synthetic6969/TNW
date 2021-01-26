@@ -1,27 +1,13 @@
---// Variables
-local integrityTable, oldHunger, oldWarmth
+local player = game:service'Players'.LocalPlayer
+local statusFolder = player:WaitForChild("Status")
 
---// Grab table and functions
-for _, v in next, getgc(true) do
-    if type(v) == "table" and rawget(v, "depleteHunger") then
-        integrityTable = v
-        oldHunger = v.depleteHunger
-        oldWarmth = v.depleteWarmth
+statusFolder.Hunger.Changed:Connect(function()
+    if getgenv().infiniteHunger then
+        statusFolder.Hunger.Value = 200
     end
-end
-
---// Disable
-getgenv().disableHunger = function()
-    integrityTable.depleteHunger = function() end
-end
-getgenv().disableWarmth = function()
-    integrityTable.depleteWarmth = function() end
-end
-
---// Enable
-getgenv().enableHunger = function()
-    integrityTable.depleteHunger = oldHunger
-end
-getgenv().enableWarmth = function()
-    integrityTable.depleteWarmth = oldWarmth
-end
+end)
+statusFolder.Warmth.Changed:Connect(function()
+    if getgenv().infiniteWarmth then
+        statusFolder.Warmth.Value = 5000
+    end
+end)
