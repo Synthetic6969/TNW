@@ -40,7 +40,7 @@ coroutine.resume(coroutine.create(function()
         --// Check for new mods
         for _, v in next, game:GetService("Players"):GetChildren() do
             pcall(function()
-                if v:GetRoleInGroup(6867395) ~= "Fan" then
+                if v:GetRankInGroup(6867395) > 7 then
                     if getgenv().ModLog then
                         player:Kick(getgenv().kickString)
                     elseif not table.find(blacklist, v.Name) then
@@ -48,7 +48,7 @@ coroutine.resume(coroutine.create(function()
                         game:GetService("StarterGui"):SetCore("SendNotification", {
                             Title = "Moderator Detected",
                             Text = v.Name,
-                            Button1 = "idc [alpha af]",
+                            Button1 = "idc",
                             Button2 = "pussy out",
                             Callback = bindable,
                             Duration = 999999
